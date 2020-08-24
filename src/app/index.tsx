@@ -1,5 +1,5 @@
 // Core
-import React from 'react';
+import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -10,8 +10,7 @@ import { history } from './init/middleware';
 // Routes
 import { Routes } from './routes';
 
-export const App = () => (
-
+export const App: FC = () => (
     <Provider store={store}>
         <Router history={history}>
             <Routes />
