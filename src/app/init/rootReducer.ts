@@ -17,4 +17,6 @@ export const rootReducer = combineReducers({
     profile,
     router,
     form
-})
+});
+
+export type AppState = ReturnType<typeof rootReducer>;

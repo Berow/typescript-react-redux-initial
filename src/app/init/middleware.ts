@@ -1,5 +1,5 @@
 // Core
-import { compose } from 'redux';
+import { compose, Middleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
@@ -13,9 +13,9 @@ export const logger = createLogger({
             return action.error ? 'firebrick' : 'deepskyblue';
         },
         prevState: () => '#1C5FAF',
-        action:    () => '#149945',
+        action: () => '#149945',
         nextState: () => '#A47104',
-        error:     () => '#ff0005',
+        error: () => '#ff0005',
     }
 });
 
@@ -24,10 +24,9 @@ const __DEV__ = process.env.NODE_ENV === 'development';
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
-const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const composeEnhancers = __DEV__ && devtools ? devtools : compose;
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 
-const middleware = [ sagaMiddleware, routerMiddleware ];
+const middleware: Middleware[] = [sagaMiddleware, routerMiddleware];
 
 if (__DEV__) {
     middleware.push(logger);

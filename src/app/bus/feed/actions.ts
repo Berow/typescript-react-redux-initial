@@ -1,26 +1,26 @@
 // Types
-import { types } from './types';
+import { types, StarshipActionTypes, Starships } from './types';
 
 export const feedActions = {
     // Sync
-    startFetching: () => {
+    startFetching: (): StarshipActionTypes => {
         return {
-            type: types.START_FETCHING,
+            type: types.START_FETCHING
         };
     },
-    stopFetching: () => {
+    stopFetching: (): StarshipActionTypes => {
         return {
-            type: types.STOP_FETCHING,
+            type: types.STOP_FETCHING
         };
     },
-    fillStarships: (starships) => {
+    fillStarships: (starships: Starships): StarshipActionTypes => {
         return {
             type: types.FILL_STARSHIPS,
             payload: starships,
         };
     },
     // Async
-    fetchStarshipsAsync: () => {
+    fetchStarshipsAsync: (): StarshipActionTypes => {
         return {
             type: types.FETCH_STARSHIPS_ASYNC,
         };
