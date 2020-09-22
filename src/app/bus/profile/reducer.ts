@@ -1,24 +1,37 @@
 // Types
-import { types } from './types';
+import {
+    FILL_PROFILE,
+    START_FETCHING,
+    STOP_FETCHING,
+    ProfileActionTypes, Profile
+} from './types';
 
-const initialState = {
-    firstName: 'Уолтер',
-    lastName: 'Уайт',
+export type ProfileState = {
+    profile: Profile,
+    isFetching: Boolean
+}
+
+const initialState: ProfileState = {
+    profile: {
+        firstName: 'Уолтер',
+        lastName: 'Уайт',
+    },
     isFetching: false,
 };
 
-export const profileReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case types.FILL_PROFILE:
-            return {...state, ...payload};
-        
-        case types.START_FETCHING:
-            return {...state, isFetching: true};
-                
-        case types.STOP_FETCHING:
-            return {...state, isFetching: false};
+export const profileReducer = (state = initialState, action: ProfileActionTypes): ProfileState => {
+    switch (action.type) {
+        case FILL_PROFILE:
+            return { ...state, ...action.payload };
+
+        case START_FETCHING:
+            return { ...state, isFetching: true };
+
+        case STOP_FETCHING:
+            return { ...state, isFetching: false };
 
         default:
-            return state;
+            const x: never = action;
     }
+    return state;
 };

@@ -1,23 +1,45 @@
 // Types
-import { types } from './types';
+import {
+    FETCH_STARSHIPS_ASYNC,
+    FILL_STARSHIPS,
+    START_FETCHING,
+    STOP_FETCHING,
+    Starships, StarshipActionTypes
+} from './types';
 
-const initialState = {
-    starships: [],
+export type FeedState = {
+    starships: Starships,
+    isFetching: Boolean,
+}
+
+const initialState: FeedState = {
+    starships: {
+        status: [],
+    },
     isFetching: false,
 };
 
-export const feedReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case types.START_FETCHING:
-                return {...state, isFetching: true};
-                
-        case types.STOP_FETCHING:
-            return {...state, isFetching: false};
+export const feedReducer = (state = initialState, action: StarshipActionTypes): FeedState => {
+    switch (action.type) {
+        case START_FETCHING:
+            return { ...state, isFetching: true };
 
-        case types.FILL_STARSHIPS:
-            return {...state, starships: payload};
+        case STOP_FETCHING:
+            return { ...state, isFetching: false };
+
+        case FILL_STARSHIPS:
+            return {
+                ...state,
+                starships: {
+                    ...action.payload
+                }
+            };
+        case FETCH_STARSHIPS_ASYNC:
+            return state;
 
         default:
-            return state;
+            const x: never = action;
     }
+
+    return state;
 };

@@ -1,25 +1,26 @@
-export const types = {
-    // Sync
-    FILL_PROFILE: 'FILL_PROFILE',
-    START_FETCHING: 'START_FETCHING',
-    STOP_FETCHING: 'STOP_FETCHING',
-};
+
+// Sync
+export const FILL_PROFILE = 'FILL_PROFILE';
+export const START_FETCHING = 'START_FETCHING';
+export const STOP_FETCHING = 'STOP_FETCHING';
+
 
 export type Profile = {
-    name: string;
+    firstName: string,
+    lastName: string,
 }
 
 type StartProfileFetchingAction = {
-    type: typeof types.START_FETCHING;
+    type: typeof START_FETCHING;
 };
 
 type StopProfileFetchingAction = {
-    type: typeof types.STOP_FETCHING;
+    type: typeof STOP_FETCHING;
 };
 
 type FillProfileAction = {
-    type: typeof types.FILL_PROFILE,
-    payload: Starships;
+    type: typeof FILL_PROFILE,
+    payload: Profile;
 };
 
 export type ProfileActionTypes =
