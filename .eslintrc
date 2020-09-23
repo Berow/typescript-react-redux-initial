@@ -1,7 +1,10 @@
 {
   "extends": [
     "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -12,6 +15,8 @@
     }
   },
   "rules": {
+    "linebreak-style": 0,
+    "indent": "off",
     "react/jsx-filename-extension": [
       2,
       {
@@ -20,6 +25,7 @@
         ]
       }
     ],
+    "react/jsx-props-no-spreading": 0,
     "import/prefer-default-export": 0,
     "import/extensions": [
       1,
@@ -28,11 +34,6 @@
         "ts": "never",
         "tsx": "never"
       }
-    ],
-    "linebreak-style": [
-      2,
-      "error",
-      "windows"
     ]
   },
   "settings": {
@@ -41,17 +42,6 @@
         ".ts",
         ".tsx"
       ]
-    },
-    "import/resolver": {
-      "node": {
-        "extensions": [
-          ".ts",
-          ".tsx"
-        ],
-        "paths": [
-          "src"
-        ]
-      }
     },
     "import/extensions": [
       ".ts",
