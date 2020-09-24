@@ -1,45 +1,50 @@
 // Types
 import {
-    FETCH_STARSHIPS_ASYNC,
-    FILL_STARSHIPS,
-    START_FETCHING,
-    STOP_FETCHING,
-    Starships, StarshipActionTypes
+  FETCH_STARSHIPS_ASYNC,
+  FILL_STARSHIPS,
+  START_FETCHING,
+  STOP_FETCHING,
+  Starships,
+  StarshipActionTypes,
 } from './types';
 
 export type FeedState = {
-    starships: Starships,
-    isFetching: Boolean,
-}
-
-const initialState: FeedState = {
-    starships: {
-        status: [],
-    },
-    isFetching: false,
+  starships: Starships;
+  isFetching: boolean;
 };
 
-export const feedReducer = (state = initialState, action: StarshipActionTypes): FeedState => {
-    switch (action.type) {
-        case START_FETCHING:
-            return { ...state, isFetching: true };
+const initialState: FeedState = {
+  starships: {
+    status: [],
+  },
+  isFetching: false,
+};
 
-        case STOP_FETCHING:
-            return { ...state, isFetching: false };
+export const feedReducer = (
+  state = initialState,
+  action: StarshipActionTypes,
+): FeedState => {
+  switch (action.type) {
+    case START_FETCHING:
+      return { ...state, isFetching: true };
 
-        case FILL_STARSHIPS:
-            return {
-                ...state,
-                starships: {
-                    ...action.payload
-                }
-            };
-        case FETCH_STARSHIPS_ASYNC:
-            return state;
+    case STOP_FETCHING:
+      return { ...state, isFetching: false };
 
-        default:
-            const x: never = action;
-    }
+    case FILL_STARSHIPS:
+      return {
+        ...state,
+        starships: {
+          ...action.payload,
+        },
+      };
+    case FETCH_STARSHIPS_ASYNC:
+      return state;
 
-    return state;
+    default:
+      // eslint-disable-next-line no-case-declarations
+      const x: never = action;
+  }
+
+  return state;
 };

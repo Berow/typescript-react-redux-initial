@@ -9,19 +9,20 @@ import observatory from './observatory.jpg';
 import { book } from '../../routes/book';
 
 export const Bridge: FC = () => {
-    const dispatch = useDispatch();
-    const profile = useSelector((state) => state.profile);
-    const _proceed = () => dispatch(push(book.panel));
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.profile);
+  // eslint-disable-next-line no-underscore-dangle
+  const _proceed = () => dispatch(push(book.panel));
 
-    return (
-        <section className={Styles.bridge}>
-            <h1>
-                Добро пожаловать на борт, {profile.firstName}
-                &nbsp;
-                {profile.lastName}!
-            </h1>
-            <img src={observatory} alt="observatory" />
-            <button onClick={_proceed}>Контрольная панель</button>
-        </section>
-    );
-}
+  return (
+    <section className={Styles.bridge}>
+      <h1>
+        Добро пожаловать на борт, {profile.firstName}
+        &nbsp;
+        {profile.lastName}!
+      </h1>
+      <img src={observatory} alt="observatory" />
+      <button onClick={_proceed}>Контрольная панель</button>
+    </section>
+  );
+};

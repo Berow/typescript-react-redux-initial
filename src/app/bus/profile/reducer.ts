@@ -1,5 +1,11 @@
 // Types
-import { FILL_PROFILE, START_FETCHING, STOP_FETCHING, ProfileActionTypes, Profile } from './types';
+import {
+  FILL_PROFILE,
+  START_FETCHING,
+  STOP_FETCHING,
+  ProfileActionTypes,
+  Profile,
+} from './types';
 
 export type ProfileState = {
   profile: Profile;
@@ -14,7 +20,10 @@ const initialState: ProfileState = {
   isFetching: false,
 };
 
-export const profileReducer = (state = initialState, action: ProfileActionTypes): ProfileState => {
+export const profileReducer = (
+  state = initialState,
+  action: ProfileActionTypes,
+): ProfileState => {
   switch (action.type) {
     case FILL_PROFILE:
       return { ...state, ...action.payload };
