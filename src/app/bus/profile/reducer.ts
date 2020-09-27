@@ -35,7 +35,7 @@ export const profileReducer = (
       return { ...state, isFetching: false };
 
     default:
-      // eslint-disable-next-line no-case-declarations
+      // eslint-disable-next-line
       const x: never = action;
   }
   return state;

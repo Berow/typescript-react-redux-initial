@@ -42,7 +42,7 @@ export const feedReducer = (
       return state;
 
     default:
-      // eslint-disable-next-line no-case-declarations
+      // eslint-disable-next-line
       const x: never = action;
   }
 
