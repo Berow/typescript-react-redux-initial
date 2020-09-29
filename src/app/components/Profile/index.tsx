@@ -1,21 +1,26 @@
 // Core
 import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
+import {
+  Formik,
+  Form,
+  Field,
+  FormikHelpers,
+} from 'formik';
 import cx from 'classnames';
 
 // Instruments
 import Styles from './styles.module.css';
 import { profileActions } from '../../bus/profile/actions';
-import { ProfileActionTypes } from '../../bus/profile/types';
+import { ProfileType } from '../../bus/profile/types';
 
 import { ProfileState } from '../../bus/profile/reducer';
 import { AppState } from '../../init/rootReducer';
 
-export const Profile:FC = () => {
+export const Profile: FC = () => {
     const dispatch = useDispatch();
 
-    const _submit = (values, actions:ProfileActionTypes) => {
+  const _submit = (values: ProfileType, actions: FormikHelpers<ProfileType>) => {
         dispatch(profileActions.startFetching());
         actions.setSubmitting(false);
         dispatch(profileActions.fillProfile(values));

@@ -3,7 +3,7 @@ export const FILL_PROFILE = 'FILL_PROFILE';
 export const START_FETCHING = 'START_FETCHING';
 export const STOP_FETCHING = 'STOP_FETCHING';
 
-export type Profile = {
+export type ProfileType = {
   firstName: string;
   lastName: string;
 };
@@ -18,7 +18,7 @@ type StopProfileFetchingAction = {
 
 type FillProfileAction = {
   type: typeof FILL_PROFILE;
-  payload: Profile;
+  payload: ProfileType;
 };
 
 export type ProfileActionTypes =

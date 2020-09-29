@@ -4,11 +4,11 @@ import {
   START_FETCHING,
   STOP_FETCHING,
   ProfileActionTypes,
-  Profile,
+  ProfileType,
 } from './types';
 
 export type ProfileState = {
-  profile: Profile;
+  profile: ProfileType;
   isFetching: boolean;
 };
 

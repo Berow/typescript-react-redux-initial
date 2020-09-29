@@ -4,22 +4,20 @@ import React from 'react';
 // Components
 import { RegistrationForm } from '../RegistrationForm';
 
-export const Registration = () => {
+export const Registration : React.FC = () => {
     const handleSubmit = (values) => {
         window.alert(JSON.stringify(values, null, 4));
-    }
+    };
 
-    const getInitialValues = () => {
-        return {
+    const getInitialValues = () => ({
             preference: 'spaces',
-            newsletter: true
-        }
-    }
+            newsletter: true,
+        });
 
     return (
-        <RegistrationForm
-            onSubmit={ handleSubmit }
-            initialValues={getInitialValues()}
-        />
+      <RegistrationForm
+        onSubmit={handleSubmit}
+        initialValues={getInitialValues()}
+      />
     );
-}
+};
