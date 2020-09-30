@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import cx from 'classnames';
-import { Field } from 'redux-form';
+import { Field, WrappedFieldProps, WrappedFieldMetaProps } from 'redux-form';
 
-const getValidityClassName = (meta) => {
+const getValidityClassName = (meta: WrappedFieldMetaProps):string|undefined => {
     if (meta.asyncValidating) {
         return 'async-validating';
     }
 
     if (meta.active) {
-        return;
+        return undefined;
     }
 
     if (meta.touched && meta.invalid) {
@@ -17,10 +17,16 @@ const getValidityClassName = (meta) => {
 
     if (meta.touched && meta.valid) {
         return 'valid';
-    }
+  }
+  return undefined;
 };
 
-export const customInput:FC = (props) => {
+type FieldsPropTypes = {
+  label: string,
+  type?: string
+}
+
+export const customInput: FC<WrappedFieldProps & FieldsPropTypes> = (props: WrappedFieldProps & FieldsPropTypes) => {
     const {
  label, input, type, meta,
 } = props;
@@ -46,7 +52,7 @@ export const customInput:FC = (props) => {
     );
 };
 
-export const customSelect:FC = (props) => (
+export const customSelect: FC<WrappedFieldProps & FieldsPropTypes> = (props: WrappedFieldProps & FieldsPropTypes) => (
   <div className="custom-select-container">
     <label>{props.label}</label>
     <select {...props.input}>
@@ -56,7 +62,7 @@ export const customSelect:FC = (props) => (
   </div>
     );
 
-export const discounts = ({ fields }) => (
+export const discounts:FC = ({ fields }) => (
   <div className="custom-field-array-container">
     {fields.map((code, index) => (
       <div key={index} className="field-array-item">
@@ -75,7 +81,7 @@ export const discounts = ({ fields }) => (
     <button
       type="button"
       onClick={() => {
-            console.log(Array.isArray(fields));
+            // console.log(Array.isArray(fields));
             fields.push();
             // console.log(fields);
         }}
